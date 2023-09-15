@@ -1,8 +1,8 @@
 import { StyleSheet, ImageBackground, Linking, Text, TextInput, TouchableOpacity, View, Pressable, Image } from 'react-native';
 import { styles } from '../App';
-import back from '../images/back.jpg';
-import addPhoto from '../images/addPhoto.svg';
-import BtnAddPhoto from '../images/add.svg'
+import back from '../img/back.jpg';
+// import addPhoto from '../images/addPhoto';
+import Add from '../img/add.svg'
 
 export const RegistrationScreen = () => {
     return (
@@ -10,13 +10,12 @@ export const RegistrationScreen = () => {
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
                 <View style={stylesRegister.container}>
                     <View style={stylesRegister.imgWrap}>
-                        <Image source={addPhoto}
-                            style={stylesRegister.imgAvatar} />
-                        <Pressable
-
+                        {/* <Image source={addPhoto}
+                            style={stylesRegister.imgAvatar} /> */}
+                        <Pressable style={stylesRegister.imgBtnAdd}
                     // onPress={onPressFunction}
                     >
-  {/* <BtnAddPhoto width={25} height={25} /> */}
+                            <Add width={25} height={25} fill='red' />
 </Pressable>
                     </View>
                     <Text style={styles.title}>Реєстрація</Text>
@@ -94,6 +93,13 @@ const stylesRegister = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'contain',
+    },
+    imgBtnAdd: {
+        width: 25,
+        height: 25,
+        position: 'absolute',
+        bottom: 13.5,
+        right: -6.25,
     },
     formWrap: {
         width: 343,
