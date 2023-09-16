@@ -1,6 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import {RegistrationScreen} from './Screens/RegistrationScreen';
 import { useFonts } from 'expo-font';
+import { LoginScreen } from './Screens/LoginScreen';
+import { PostsScreen } from './Screens/PostsScreen';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,7 +18,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <RegistrationScreen />
+      {/* <RegistrationScreen /> */}
+      {/* <LoginScreen /> */}
+      <PostsScreen />
     </View>
   );
 };
@@ -28,7 +32,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'RobotoRegular',
     fontSize: 16,
     fontStyle: 'normal',
-
+    color: '#212121',
   },
   imageBack: {
     width: '100%',
@@ -37,18 +41,24 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    color: '#212121',
-    textAlign: 'center',
     fontSize: 30,
-    fontStyle: 'normal',
     fontFamily: 'RobotoMedium',
     letterSpacing: 0.3,
     marginBottom: 33,
   },
   avatar: {
+    position: 'absolute',
+    top: -60,
     width: 120,
     height: 120,
+    backgroundColor: '#F6F6F6',
     borderRadius: 16,
+  },
+  formWrap: {
+    width: 343,
+    gap: 16,
+    marginBottom: 43,
+    position: 'relative',
   },
   input: {
     height: 50,
@@ -62,27 +72,30 @@ export const styles = StyleSheet.create({
     borderColor: '#E8E8E8',
     color: '#212121',
   },
+  touchWrapForm: {
+    position: 'absolute',
+    bottom: 31,
+    right: 16,
+  },
   button: {
     width: 343,
     paddingVertical: 16,
     paddingHorizontal: 32,
     borderRadius: 100,
     backgroundColor: '#FF6C00',
-    
-marginBottom: 16,
+    marginBottom: 16,
   },
   textButton: {
-color: '#FFF',
+    color: '#FFF',
     textAlign: 'center',
   },
   visiblePassword: {
     color: '#1B4371',
-
   },
   textUnderButton: {
-        color: '#1B4371',
-textShadowColor: 'rgba(0, 0, 0, 0.25)',
-textShadowOffset: {width: 0, height: 4},
-  textShadowRadius: 4,
+    color: '#1B4371',
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 4,
   }
 });

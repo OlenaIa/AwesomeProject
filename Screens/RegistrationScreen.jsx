@@ -1,25 +1,24 @@
 import { StyleSheet, ImageBackground, Linking, Text, TextInput, TouchableOpacity, View, Pressable, Image } from 'react-native';
 import { styles } from '../App';
 import back from '../img/back.jpg';
-// import addPhoto from '../images/addPhoto';
-import Add from '../img/add.svg'
+import { Ionicons } from '@expo/vector-icons'; 
 
 export const RegistrationScreen = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
                 <View style={stylesRegister.container}>
-                    <View style={stylesRegister.imgWrap}>
+                    <View style={styles.avatar}>
                         {/* <Image source={addPhoto}
                             style={stylesRegister.imgAvatar} /> */}
                         <Pressable style={stylesRegister.imgBtnAdd}
-                    // onPress={onPressFunction}
-                    >
-                            <Add width={25} height={25} fill='red' />
-</Pressable>
+                        // onPress={onPressFunction}
+                        >
+                            <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
+                        </Pressable>
                     </View>
                     <Text style={styles.title}>Реєстрація</Text>
-                    <View style={stylesRegister.formWrap}>
+                    <View style={styles.formWrap}>
                         <TextInput
                             style={styles.input}
                             // onChangeText={onChangeNumber}
@@ -42,27 +41,25 @@ export const RegistrationScreen = () => {
                             keyboardType="visible-password"
                         />
                         <TouchableOpacity
-                            style={stylesRegister.touchWrapForm}
+                            style={styles.touchWrapForm}
                             onPress={() => Linking.openURL('#')}>
-                        <Text style={styles.visiblePassword}>
-                            Показати
-                        </Text>
-                    </TouchableOpacity>
+                            <Text style={styles.visiblePassword}>
+                                Показати
+                            </Text>
+                        </TouchableOpacity>
                     </View>
-                    
                     <Pressable style={styles.button}
-
                     // onPress={onPressFunction}
                     >
-  <Text style={styles.textButton}>Зареєструватися</Text>
-</Pressable>
-                <TouchableOpacity onPress={() => Linking.openURL('#')}>
-                    <Text style={styles.visiblePassword}>
-                        Вже є акаунт? Увійти
-                    </Text>
+                        <Text style={styles.textButton}>Зареєструватися</Text>
+                    </Pressable>
+                    <TouchableOpacity onPress={() => Linking.openURL('#')}>
+                        <Text style={styles.visiblePassword}>
+                            Вже є акаунт? Увійти
+                        </Text>
                     </TouchableOpacity>
-                    </View>
-                </ImageBackground>
+                </View>
+            </ImageBackground>
         </View>
     )
 };
@@ -70,7 +67,6 @@ export const RegistrationScreen = () => {
 const stylesRegister = StyleSheet.create({
     container: {
         position: 'relative',
-        flexDirection: 'column',
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: "flex-end",
@@ -99,18 +95,6 @@ const stylesRegister = StyleSheet.create({
         height: 25,
         position: 'absolute',
         bottom: 13.5,
-        right: -6.25,
+        right: -12.5,
     },
-    formWrap: {
-        width: 343,
-
-        gap: 16,
-        marginBottom: 43,
-        position: 'relative',
-    },
-    touchWrapForm: {
-        position: 'absolute',
-        bottom: 31,
-        right: 16,
-    }
 });
