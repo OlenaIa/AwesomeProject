@@ -14,11 +14,15 @@ export const PostsScreen = () => {
                     <Ionicons name="exit-outline" size={24} color="#BDBDBD" />
                 </Pressable>
             </View>
-            <View>
-                <Image source={smallAvatar}/>
-            </View>
+            <View style={stylesPostsScreen.card}>
+                <Image source={smallAvatar} />
+                <View>
+                    <Text style={stylesPostsScreen.cardName}>Natali Romanova</Text>
+                    <Text style={stylesPostsScreen.cardEmail}>email@example.com</Text>
+                
+                </View></View>
             <View style={stylesPostsScreen.footer}>
-                <Pressable 
+                <Pressable
                 // onPress={onPressFunction}
                 >
                     <AntDesign name="appstore-o" size={24} color="rgba(33, 33, 33, 0.8)" />
@@ -28,7 +32,7 @@ export const PostsScreen = () => {
                 >
                     <Ionicons name="add" size={24} color="white" />
                 </Pressable>
-                <Pressable 
+                <Pressable
                 // onPress={onPressFunction}
                 >
                     <Feather name="user" size={24} color="rgba(33, 33, 33, 0.8)" />
@@ -42,6 +46,7 @@ const stylesPostsScreen = StyleSheet.create({
     header: {
         position: 'relative',
         paddingTop: 55,
+        marginBottom: 32,
         borderBottomColor: 'rgba(0, 0, 0, 0.30)',
         borderBottomWidth: 0.5,
         paddingBottom: 11,
@@ -49,14 +54,28 @@ const stylesPostsScreen = StyleSheet.create({
     },
     titleH3: {
         fontSize: 17,
-    fontFamily: 'RobotoMedium',
-lineHeight: 22,
-letterSpacing: -0.408,
+        fontFamily: 'RobotoMedium',
+        lineHeight: 22,
+        letterSpacing: -0.408,
     },
     exitIcon: {
         position: 'absolute',
         right: 10,
         bottom: 11,
+    },
+    card: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginHorizontal: 16,
+    },
+    cardName: {
+        fontFamily: 'RobotoBold',
+        fontSize: 13,
+    },
+    cardEmail: {
+        color: 'rgba(33, 33, 33, 0.80)',
+        fontSize: 11,
     },
     footer: {
         flexDirection: 'row',
@@ -77,4 +96,4 @@ letterSpacing: -0.408,
         backgroundColor: '#FF6C00',
         alignItems: 'center',
     }
-})
+});
