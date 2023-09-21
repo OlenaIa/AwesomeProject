@@ -1,50 +1,28 @@
-import { StyleSheet, ImageBackground, Linking, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { StyleSheet, ImageBackground, Linking, Text, TouchableOpacity, View, Pressable } from 'react-native';
 import { styles } from '../App';
 import back from '../img/back.jpg';
+import { LogInForm } from '../Components/LofInForm';
 
 export const LoginScreen = () => {
+
     return (
         <View style={styles.container}>
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
                 <View style={stylesLogin.container}>
                     <Text style={styles.title}>Увійти</Text>
-                    <View style={styles.formWrap}>
-                        <TextInput
-                            style={styles.input}
-                            // onChangeText={onChangeNumber}
-                            // value={number}
-                            placeholder="Адреса електронної пошти"
-                            keyboardType="email-address"
-                        />
-                        <TextInput
-                            style={styles.input}
-                            // onChangeText={onChangeNumber}
-                            // value={number}
-                            placeholder="Пароль"
-                            keyboardType="visible-password"
-                        />
-                        <TouchableOpacity
-                            style={styles.touchWrapForm}
-                            onPress={() => Linking.openURL('#')}>
-                        <Text style={styles.visiblePassword}>
-                            Показати
-                        </Text>
-                    </TouchableOpacity>
-                    </View>
-                    
+                    <LogInForm />       
                     <Pressable style={styles.button}
-
                     // onPress={onPressFunction}
                     >
-  <Text style={styles.textButton}>Увійти</Text>
-</Pressable>
-                <TouchableOpacity onPress={() => Linking.openURL('#')}>
-                    <Text style={styles.visiblePassword}>
-                        Немає акаунту? Зареєструватися
-                    </Text>
+                        <Text style={styles.textButton}>Увійти</Text>
+                    </Pressable>
+                    <TouchableOpacity onPress={() => Linking.openURL('#')}>
+                        <Text style={styles.visiblePassword}>
+                            Немає акаунту? Зареєструватися
+                        </Text>
                     </TouchableOpacity>
-                    </View>
-                </ImageBackground>
+                </View>
+            </ImageBackground>
         </View>
     )
 };

@@ -1,53 +1,18 @@
-import { StyleSheet, ImageBackground, Linking, Text, TextInput, TouchableOpacity, View, Pressable, Image } from 'react-native';
+import { StyleSheet, ImageBackground, Linking, Text, TouchableOpacity, View, Pressable } from 'react-native';
 import { styles } from '../App';
 import back from '../img/back.jpg';
-import { Ionicons } from '@expo/vector-icons'; 
+import { RegistrationForm } from '../Components/RegistrationForm';
+import { RegistrationAvatar } from '../Components/RegistrationAvatar';
 
 export const RegistrationScreen = () => {
+
     return (
         <View style={styles.container}>
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
                 <View style={stylesRegister.container}>
-                    <View style={styles.avatar}>
-                        {/* <Image source={addPhoto}
-                            style={stylesRegister.imgAvatar} /> */}
-                        <Pressable style={stylesRegister.imgBtnAdd}
-                        // onPress={onPressFunction}
-                        >
-                            <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
-                        </Pressable>
-                    </View>
+                    <RegistrationAvatar />
                     <Text style={styles.title}>Реєстрація</Text>
-                    <View style={styles.formWrap}>
-                        <TextInput
-                            style={styles.input}
-                            // onChangeText={onChangeNumber}
-                            // value={number}
-                            placeholder="Логін"
-                            keyboardType="default"
-                        />
-                        <TextInput
-                            style={styles.input}
-                            // onChangeText={onChangeNumber}
-                            // value={number}
-                            placeholder="Адреса електронної пошти"
-                            keyboardType="email-address"
-                        />
-                        <TextInput
-                            style={styles.input}
-                            // onChangeText={onChangeNumber}
-                            // value={number}
-                            placeholder="Пароль"
-                            keyboardType="visible-password"
-                        />
-                        <TouchableOpacity
-                            style={styles.touchWrapForm}
-                            onPress={() => Linking.openURL('#')}>
-                            <Text style={styles.visiblePassword}>
-                                Показати
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    <RegistrationForm />
                     <Pressable style={styles.button}
                     // onPress={onPressFunction}
                     >
@@ -89,12 +54,5 @@ const stylesRegister = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'contain',
-    },
-    imgBtnAdd: {
-        width: 25,
-        height: 25,
-        position: 'absolute',
-        bottom: 13.5,
-        right: -12.5,
     },
 });
