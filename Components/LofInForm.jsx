@@ -18,6 +18,10 @@ export const LogInForm = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(true);
+    const [isFocus, setIsFocus] = useState({
+        email: false,
+        password: false
+    });
 
     const onSubmitForm = () => {
         console.log('email =>', email);
@@ -25,6 +29,9 @@ export const LogInForm = ({navigation}) => {
         setEmail('');
         setPassword('');
     };
+
+    const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
+    const onBlurToggle = (inputName) => {setIsFocus({[inputName]: false})};
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -34,14 +41,19 @@ export const LogInForm = ({navigation}) => {
                     behavior={Platform.OS == "ios" ? "padding" : "height"}>
                     <View style={styles.formWrap}>
                         <TextInput
-                            style={styles.input}
+                            style={[styles.input, (isFocus.email ? styles.inputFocus : styles.inputBlur) ]}
+                            autoFocus
+                            onFocus={() => onFocusToggle('email')}
+                            onBlur={() => onBlurToggle('email')}
                             onChangeText={setEmail}
                             value={email}
                             placeholder="Адреса електронної пошти"
                             keyboardType="email-address"
                         />
                         <TextInput
-                            style={styles.input}
+                            style={[styles.input, (isFocus.password ? styles.inputFocus : styles.inputBlur) ]}
+                            onFocus={() => onFocusToggle('password')}
+                            onBlur={() => onBlurToggle('password')}
                             onChangeText={setPassword}
                             value={password}
                             placeholder="Пароль"

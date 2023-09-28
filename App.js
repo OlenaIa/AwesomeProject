@@ -79,10 +79,16 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 16,
     paddingBottom: 15,
-    backgroundColor: '#F6F6F6',
     borderWidth: 1,
-    borderColor: '#E8E8E8',
     color: '#212121',
+  },
+  inputFocus: {
+    borderColor: '#FF6C00',
+    backgroundColor: '#FFFFFF'
+  },
+  inputBlur: {
+    borderColor: '#E8E8E8',
+    backgroundColor: '#F6F6F6'
   },
   touchWrapForm: {
     position: 'absolute',
