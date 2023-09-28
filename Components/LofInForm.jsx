@@ -14,7 +14,7 @@ import {
 import { styles } from '../App';
 import { useState } from 'react';
 
-export const LogInForm = () => {
+export const LogInForm = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(true);
@@ -58,10 +58,10 @@ export const LogInForm = () => {
                 </KeyboardAvoidingView>
                 <Pressable style={styles.button}
                 onPress={onSubmitForm}
-                >
+                >  
                     <Text style={styles.textButton}>Увійти</Text>
                 </Pressable>
-                <TouchableOpacity onPress={() => Linking.openURL('#')}>
+                <TouchableOpacity onPress={() => navigation.navigate("Registration")}>
                     <Text style={styles.visiblePassword}>
                         Немає акаунту? Зареєструватися
                     </Text>

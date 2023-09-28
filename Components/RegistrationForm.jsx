@@ -15,7 +15,7 @@ import { styles } from '../App';
 import { useState } from 'react';
 import { RegistrationAvatar } from '../Components/RegistrationAvatar';
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({ navigation }) => {
     const [login, setLogin] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -74,7 +74,9 @@ export const RegistrationForm = () => {
                 >
                     <Text style={styles.textButton}>Зареєструватися</Text>
                 </Pressable>
-                <TouchableOpacity onPress={() => Linking.openURL('#')}>
+                <TouchableOpacity onPress={() => navigation.navigate("Login",
+                    // { sessionId: 45, userId: "22e24" }
+                )}>
                     <Text style={styles.visiblePassword}>
                         Вже є акаунт? Увійти
                     </Text>
