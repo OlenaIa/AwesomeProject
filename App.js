@@ -6,6 +6,7 @@ import { LoginScreen } from './Screens/LoginScreen';
 import { PostsScreen } from './Screens/PostsScreen';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
+import { CreatePostsScreen } from './Screens/CreatePostsScreen';
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
 
@@ -22,18 +23,17 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <MainStack.Navigator initialRouteName="Login">
-        {/* <View style={styles.container}> */}
-          <MainStack.Screen name="Registration" component={RegistrationScreen} />{/* Аналог Route */}
-        <MainStack.Screen name="Login" component={LoginScreen} />
-        <MainStack.Screen name="Home" component={PostsScreen} />
-      {/* <RegistrationScreen /> */}
-      {/* <LoginScreen /> */}
-      {/* <PostsScreen /> */}
-      {/* </View> */}
-      </MainStack.Navigator>
-      </NavigationContainer>
+           <CreatePostsScreen />
+// <PostsScreen/> 
+    // <NavigationContainer>
+    //   <MainStack.Navigator initialRouteName="Login">
+    //     <View style={styles.container}>
+    //       <MainStack.Screen name="Registration" component={RegistrationScreen} />
+    //     <MainStack.Screen name="Login" component={LoginScreen} />
+    //     <MainStack.Screen name="Home" component={PostsScreen} />
+    //   </View>
+    //   </MainStack.Navigator>
+    //   </NavigationContainer>
   );
 };
 

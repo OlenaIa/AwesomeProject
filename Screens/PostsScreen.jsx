@@ -21,7 +21,7 @@ export const PostsScreen = () => {
                     <Text style={stylesPostsScreen.cardEmail}>email@example.com</Text>
                 
                 </View></View>
-            <View style={stylesPostsScreen.footer}>
+            <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
                 <Pressable
                 // onPress={onPressFunction}
                 >
@@ -42,7 +42,7 @@ export const PostsScreen = () => {
     )
 };
 
-const stylesPostsScreen = StyleSheet.create({
+export const stylesPostsScreen = StyleSheet.create({
     header: {
         position: 'relative',
         paddingTop: 55,
@@ -60,8 +60,8 @@ const stylesPostsScreen = StyleSheet.create({
     },
     exitIcon: {
         position: 'absolute',
-        right: 10,
-        bottom: 11,
+        right: 16,
+        bottom: 10,
     },
     card: {
         flexDirection: 'row',
@@ -83,10 +83,13 @@ const stylesPostsScreen = StyleSheet.create({
         gap: 39,
         marginTop: 'auto',
         paddingTop: 9,
-        borderTopColor: 'rgba(0, 0, 0, 0.30)',
-        borderTopWidth: 0.5,
+        
         paddingBottom: 34,
         alignItems: 'center',
+    },
+    footerBorder: {
+        borderTopColor: 'rgba(0, 0, 0, 0.30)',
+        borderTopWidth: 0.5,
     },
     footerButton: {
         justifyContent: 'center',
