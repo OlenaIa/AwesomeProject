@@ -79,13 +79,14 @@ export const CreatePostsScreen = () => {
     )
 };
 
-const stylesCreatePostsScreen = StyleSheet.create({
+export const stylesCreatePostsScreen = StyleSheet.create({
     backIcon: {
         position: 'absolute',
         left: 10,
         bottom: 11,
     },
     card: {
+        // width: '100%',
         alignItems: 'center',
         gap: 32,
         paddingHorizontal: 16,

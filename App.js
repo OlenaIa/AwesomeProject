@@ -7,6 +7,7 @@ import { PostsScreen } from './Screens/PostsScreen';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { CreatePostsScreen } from './Screens/CreatePostsScreen';
+import { CommentsScreen } from './Screens/CommentsScreen';
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
 
@@ -23,7 +24,9 @@ export default function App() {
   }
 
   return (
-      <CreatePostsScreen />
+          <CommentsScreen />
+
+      // <CreatePostsScreen />
 // <PostsScreen/> 
     // <NavigationContainer>
     //   <MainStack.Navigator initialRouteName="Login">
