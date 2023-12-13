@@ -23,12 +23,12 @@ export default function App() {
   }
 
   return (
-           <CreatePostsScreen />
+      <CreatePostsScreen />
 // <PostsScreen/> 
     // <NavigationContainer>
     //   <MainStack.Navigator initialRouteName="Login">
     //     <View style={styles.container}>
-    //       <MainStack.Screen name="Registration" component={RegistrationScreen} />
+    //      <MainStack.Screen name="Registration" component={RegistrationScreen} />
     //     <MainStack.Screen name="Login" component={LoginScreen} />
     //     <MainStack.Screen name="Home" component={PostsScreen} />
     //   </View>
