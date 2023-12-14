@@ -100,7 +100,7 @@ const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
     )
 };
 
-const stylesRegister = StyleSheet.create({
+export const stylesRegister = StyleSheet.create({
     container: {
         position: 'relative',
         alignItems: 'center',

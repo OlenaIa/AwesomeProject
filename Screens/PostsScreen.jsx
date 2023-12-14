@@ -20,7 +20,8 @@ export const PostsScreen = () => {
                     <Text style={stylesPostsScreen.cardName}>Natali Romanova</Text>
                     <Text style={stylesPostsScreen.cardEmail}>email@example.com</Text>
                 
-                </View></View>
+                </View>
+            </View>
             <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
                 <Pressable
                 // onPress={onPressFunction}
@@ -78,6 +79,7 @@ export const stylesPostsScreen = StyleSheet.create({
         fontSize: 11,
     },
     footer: {
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 39,

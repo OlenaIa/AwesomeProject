@@ -61,6 +61,7 @@ export const PostCreateCard = () => {
 
 export const stylesPostCreateCard = StyleSheet.create({
     card: {
+        // width: '100%',
         alignItems: 'center',
         gap: 32,
         paddingHorizontal: 16,

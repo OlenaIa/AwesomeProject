@@ -7,8 +7,6 @@ import 'react-native-gesture-handler';
 import { PostCreateCard } from "../Components/PostCreateCard";
 
 export const CreatePostsScreen = () => {
-
-
     return (
         <View style={styles.container}>
             <View style={stylesPostsScreen.header}>
