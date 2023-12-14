@@ -24,9 +24,9 @@ export default function App() {
   }
 
   return (
-          <CommentsScreen />
+          // <CommentsScreen />
 
-      // <CreatePostsScreen />
+      <CreatePostsScreen />
 // <PostsScreen/> 
     // <NavigationContainer>
     //   <MainStack.Navigator initialRouteName="Login">

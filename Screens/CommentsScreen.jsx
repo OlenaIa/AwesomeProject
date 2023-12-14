@@ -1,16 +1,16 @@
-import { Image, Linking, Pressable, StyleSheet, Text, View, TextInput } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View, TextInput } from "react-native"
 import { styles } from "../App"
-import { MaterialIcons , AntDesign, Feather, SimpleLineIcons, Ionicons   } from '@expo/vector-icons'; 
+import { AntDesign, Ionicons   } from '@expo/vector-icons'; 
 import post from '../img/post.jpg'
 import { stylesPostsScreen } from "./PostsScreen";
-import { stylesCreatePostsScreen } from "./CreatePostsScreen";
-
+import { stylesPostCreateCard } from "../Components/PostCreateCard";
+import {CommentItem} from "../Components/CommentItem"
 import 'react-native-gesture-handler';
 import { useState } from "react";
+import { stylesCreatePostsScreen } from "./CreatePostsScreen";
 
 export const CommentsScreen = () => {
     const [comment, setComment] = useState('');
-
 
     return (
         <View style={styles.container}>
@@ -22,22 +22,11 @@ export const CommentsScreen = () => {
                     <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
                 </Pressable>
             </View>
-            <View style={stylesCreatePostsScreen.card}>
-                <View style={stylesCreatePostsScreen.photo}>
+            <View style={stylesPostCreateCard.card}>
+                <View style={stylesPostCreateCard.photo}>
                     <Image source={post} />
                 </View>
-                <View style={stylesCommentsScreen.wrapComments}>
-                    <View style={stylesCommentsScreen.commentItem}>
-                        <View style={stylesCommentsScreen.avatar}>
-                            {/* <Image source={post} /> */}
-                        </View>
-                        <View style={stylesCommentsScreen.commentTextWrap}>
-                            <Text style={stylesCommentsScreen.text}>Comment</Text>
-                            <Text style={stylesCommentsScreen.date}>Date</Text>
-                        </View>
-                    </View>
-                </View>
-                
+                <CommentItem />
             </View>
             <View style={stylesCommentsScreen.commInputWrap}>
                 <View style={position = 'relative'}>
@@ -53,48 +42,12 @@ export const CommentsScreen = () => {
                         <Ionicons name="arrow-up" size={24} color="#FFFFFF" />
                     </Pressable>
                 </View>
-                
             </View>
         </View>
     )
 };
 
 const stylesCommentsScreen = StyleSheet.create({
-    wrapComments: {
-        gap: 24,
-    },
-    commentItem: {
-        flexDirection: 'row',
-        gap: 16,
-        alignItems: 'flex-start'
-    },
-    avatar: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 28,
-        height: 28,
-        flexShrink: 0,
-        // background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-        borderRadius: 28,
-        backgroundColor: 'red',
-    },
-    commentTextWrap: {
-        width: 299,
-        padding: 16,
-        gap: 8,
-        borderBottomRightRadius: 6,
-        borderTomRightRadius: 6,
-        backgroundColor: 'rgba(0, 0, 0, 0.03)',
-    },
-    text: {
-        fontSize: 13,
-        lineHeight: 18,
-    },
-    date: {
-        color: '#BDBDBD',
-        textAlign: 'right',
-        fontSize: 10,
-    },
     commInputWrap: {
         alignItems: 'center',
         marginTop: 'auto',
