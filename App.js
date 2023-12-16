@@ -9,6 +9,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { CreatePostsScreen } from './Screens/CreatePostsScreen';
 import { CommentsScreen } from './Screens/CommentsScreen';
 import { ProfileScreen } from './Screens/ProfileScreen';
+import { HomeScreen } from './Screens/HomeScreen';
+import { MapScreen } from './Screens/MapScreen';
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
 const { Navigator, Screen } = MainStack;
@@ -55,6 +57,7 @@ export default function App() {
           // }}
         />
         <Screen name="Home" component={PostsScreen} />
+                <Screen name="Start" component={HomeScreen} />
         <Screen name="Profile" component={ProfileScreen} />
         <Screen name="Comments" component={CommentsScreen} />
         <Screen name="CreatePosts" component={CreatePostsScreen} />
