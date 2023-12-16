@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import {RegistrationScreen} from './Screens/RegistrationScreen';
 import 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
@@ -11,6 +11,7 @@ import { CommentsScreen } from './Screens/CommentsScreen';
 import { ProfileScreen } from './Screens/ProfileScreen';
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
+const { Navigator, Screen } = MainStack;
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,18 +27,42 @@ export default function App() {
 
   return (
           // <CommentsScreen />
- <ProfileScreen /> 
+//  <ProfileScreen /> 
    //   <CreatePostsScreen />
 // <PostsScreen/> 
-    // <NavigationContainer>
-    //   <MainStack.Navigator initialRouteName="Login">
-    //     <View style={styles.container}>
-    //      <MainStack.Screen name="Registration" component={RegistrationScreen} />
-    //     <MainStack.Screen name="Login" component={LoginScreen} />
-    //     <MainStack.Screen name="Home" component={PostsScreen} />
-    //   </View>
-    //   </MainStack.Navigator>
-    //   </NavigationContainer>
+    <NavigationContainer>
+      <Navigator initialRouteName="Login">
+        {/* <View style={styles.container}> */}
+         <Screen name="Registration" component={RegistrationScreen} />
+        <Screen name="Login" component={LoginScreen}
+          // options={{
+          //   title: "Home screen",
+          //   headerStyle: {
+          //     backgroundColor: "blue",
+          //   },
+          //   headerTintColor: "green",
+          //   headerTitleStyle: {
+          //     fontWeight: "bold",
+          //     fontSize: 20,
+          //   },
+          //   headerRight: () => (
+          //     <Button
+          //       onPress={() => alert("This is a button!")}
+          //       title="Press me"
+          //       color="black"
+          //     />
+          //   ),
+          // }}
+        />
+        <Screen name="Home" component={PostsScreen} />
+        <Screen name="Profile" component={ProfileScreen} />
+        <Screen name="Comments" component={CommentsScreen} />
+        <Screen name="CreatePosts" component={CreatePostsScreen} />
+        <Screen name="Map" component={MapScreen} />
+
+      {/* </View> */}
+      </Navigator>
+      </NavigationContainer>
   );
 };
 
