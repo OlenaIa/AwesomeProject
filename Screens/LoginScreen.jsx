@@ -6,7 +6,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 export const LoginScreen = () => {
     const navigation = useNavigation();
-    console.log(navigation);
     // const { params: { userId } } = useRoute();
     
     return (

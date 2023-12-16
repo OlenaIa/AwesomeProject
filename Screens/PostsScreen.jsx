@@ -1,4 +1,4 @@
-import { Image, Linking, Pressable, StyleSheet, Text, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { styles } from "../App"
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons'; 
 import smallAvatar from '../img/smallAvatar.jpg'
@@ -22,23 +22,7 @@ export const PostsScreen = () => {
                 
                 </View>
             </View>
-            <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
-                <Pressable
-                // onPress={onPressFunction}
-                >
-                    <AntDesign name="appstore-o" size={24} color="rgba(33, 33, 33, 0.8)" />
-                </Pressable>
-                <Pressable style={stylesPostsScreen.footerButton}
-                // onPress={onPressFunction}
-                >
-                    <Ionicons name="add" size={24} color="white" />
-                </Pressable>
-                <Pressable
-                // onPress={onPressFunction}
-                >
-                    <Feather name="user" size={24} color="rgba(33, 33, 33, 0.8)" />
-                </Pressable>
-            </View>
+        
         </View>
     )
 };
@@ -78,27 +62,4 @@ export const stylesPostsScreen = StyleSheet.create({
         color: 'rgba(33, 33, 33, 0.80)',
         fontSize: 11,
     },
-    footer: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        gap: 39,
-        marginTop: 'auto',
-        paddingTop: 9,
-        
-        paddingBottom: 34,
-        alignItems: 'center',
-    },
-    footerBorder: {
-        borderTopColor: 'rgba(0, 0, 0, 0.30)',
-        borderTopWidth: 0.5,
-    },
-    footerButton: {
-        justifyContent: 'center',
-        width: 70,
-        height: 40,
-        borderRadius: 20,
-        backgroundColor: '#FF6C00',
-        alignItems: 'center',
-    }
 });

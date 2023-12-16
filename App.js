@@ -11,6 +11,7 @@ import { CommentsScreen } from './Screens/CommentsScreen';
 import { ProfileScreen } from './Screens/ProfileScreen';
 import { HomeScreen } from './Screens/HomeScreen';
 import { MapScreen } from './Screens/MapScreen';
+import { HomeTabsBar } from './Components/HomeTabsBar';
 
 const MainStack = createStackNavigator(); // вказує на групу навігаторів
 const { Navigator, Screen } = MainStack;
@@ -56,11 +57,9 @@ export default function App() {
           //   ),
           // }}
         />
-        <Screen name="Home" component={PostsScreen} />
+        <Screen name="Home" component={HomeTabsBar} />
                 {/* <Screen name="Start" component={HomeScreen} />
-        <Screen name="Profile" component={ProfileScreen} />
         <Screen name="Comments" component={CommentsScreen} />
-        <Screen name="CreatePosts" component={CreatePostsScreen} />
         <Screen name="Map" component={MapScreen} /> */}
 
       {/* </View> */}
