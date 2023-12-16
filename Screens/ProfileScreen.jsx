@@ -1,7 +1,6 @@
 import { ImageBackground, View, Text, Pressable, StyleSheet } from 'react-native';
 import { styles } from '../App';
 import back from '../img/back.jpg';
-import { RegistrationAvatar } from '../Components/RegistrationAvatar';
 import { stylesRegister } from '../Components/RegistrationForm';
 import { PostItem } from '../Components/PostItem';
 import { stylesPostsScreen } from './PostsScreen';
@@ -13,7 +12,15 @@ export const ProfileScreen = () => {
         <View style={styles.container}>
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
                 <View style={stylesRegister.container}>
-                    <RegistrationAvatar />
+<View style={styles.avatar}>
+                    {/* <Image source={addPhoto}
+                            style={stylesRegister.imgAvatar} /> */}
+                    <Pressable style={stylesRegister.imgBtnAdd}
+                    // onPress={onPressFunction}
+                    >
+                        <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
+                    </Pressable>
+                    </View>
                     <Text style={styles.title}>Natali Romanova</Text>
                     <View style={stylesProfileScreen.postList}>
                         <PostItem />

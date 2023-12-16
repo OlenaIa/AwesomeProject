@@ -28,6 +28,7 @@ export const LogInForm = ({navigation}) => {
         console.log('password =>', password);
         setEmail('');
         setPassword('');
+        navigation.navigate("Home");
     };
 
     const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};

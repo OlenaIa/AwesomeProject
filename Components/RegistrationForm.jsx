@@ -1,6 +1,5 @@
 import {
     StyleSheet,
-    Linking,
     Text,
     TouchableOpacity,
     View,
@@ -13,7 +12,8 @@ import {
 } from 'react-native';
 import { styles } from '../App';
 import { useState } from 'react';
-import { RegistrationAvatar } from '../Components/RegistrationAvatar';
+import { Ionicons } from '@expo/vector-icons'; 
+
 
 export const RegistrationForm = ({ navigation }) => {
     const [login, setLogin] = useState('');
@@ -32,21 +32,32 @@ export const RegistrationForm = ({ navigation }) => {
         setLogin('');
         setEmail('');
         setPassword('');
+        navigation.navigate("Home",
+                    // { sessionId: 45, userId: "22e24" }
+                )
     };
 
-const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
-    const onBlurToggle = (inputName) => {setIsFocus({[inputName]: false})};
+    const onFocusToggle = (inputName) => { setIsFocus({ [inputName]: true }) };
+    const onBlurToggle = (inputName) => { setIsFocus({ [inputName]: false }) };
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={stylesRegister.container}>
-                <RegistrationAvatar />
+                <View style={styles.avatar}>
+                    {/* <Image source={addPhoto}
+                            style={stylesRegister.imgAvatar} /> */}
+                    <Pressable style={stylesRegister.imgBtnAdd}
+                    // onPress={onPressFunction}
+                    >
+                        <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
+                    </Pressable>
+                </View>
                 <Text style={styles.title}>Реєстрація</Text>
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"}>
                     <View style={styles.formWrap}>
                         <TextInput
-                            style={[styles.input, (isFocus.login ? styles.inputFocus : styles.inputBlur) ]}
+                            style={[styles.input, (isFocus.login ? styles.inputFocus : styles.inputBlur)]}
                             autoFocus
                             onFocus={() => onFocusToggle('login')}
                             onBlur={() => onBlurToggle('login')}
@@ -56,7 +67,7 @@ const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
                             keyboardType="default"
                         />
                         <TextInput
-                            style={[styles.input, (isFocus.email ? styles.inputFocus : styles.inputBlur) ]}
+                            style={[styles.input, (isFocus.email ? styles.inputFocus : styles.inputBlur)]}
                             onFocus={() => onFocusToggle('email')}
                             onBlur={() => onBlurToggle('email')}
                             
@@ -66,7 +77,7 @@ const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
                             keyboardType="email-address"
                         />
                         <TextInput
-                            style={[styles.input, (isFocus.password ? styles.inputFocus : styles.inputBlur) ]}
+                            style={[styles.input, (isFocus.password ? styles.inputFocus : styles.inputBlur)]}
                             onFocus={() => onFocusToggle('password')}
                             onBlur={() => onBlurToggle('password')}
                             onChangeText={setPassword}
@@ -84,7 +95,7 @@ const onFocusToggle = (inputName) => {setIsFocus({[inputName]: true})};
                     </View>
                 </KeyboardAvoidingView>
                 <Pressable style={styles.button}
-                onPress={onSubmitForm}
+                    onPress={onSubmitForm}
                 >
                     <Text style={styles.textButton}>Зареєструватися</Text>
                 </Pressable>
@@ -120,6 +131,13 @@ export const stylesRegister = StyleSheet.create({
         height: 120,
         backgroundColor: '#F6F6F6',
         borderRadius: 16,
+    },
+    imgBtnAdd: {
+        width: 25,
+        height: 25,
+        position: 'absolute',
+        bottom: 13.5,
+        right: -12.5,
     },
     imgAvatar: {
         width: '100%',

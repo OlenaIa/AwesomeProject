@@ -57,11 +57,11 @@ export default function App() {
           // }}
         />
         <Screen name="Home" component={PostsScreen} />
-                <Screen name="Start" component={HomeScreen} />
+                {/* <Screen name="Start" component={HomeScreen} />
         <Screen name="Profile" component={ProfileScreen} />
         <Screen name="Comments" component={CommentsScreen} />
         <Screen name="CreatePosts" component={CreatePostsScreen} />
-        <Screen name="Map" component={MapScreen} />
+        <Screen name="Map" component={MapScreen} /> */}
 
       {/* </View> */}
       </Navigator>
