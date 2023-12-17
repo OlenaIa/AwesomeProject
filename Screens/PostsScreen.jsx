@@ -19,7 +19,6 @@ export const PostsScreen = () => {
                 <View>
                     <Text style={stylesPostsScreen.cardName}>Natali Romanova</Text>
                     <Text style={stylesPostsScreen.cardEmail}>email@example.com</Text>
-                
                 </View>
             </View>
         

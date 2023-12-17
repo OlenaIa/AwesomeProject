@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { PostsScreen } from '../Screens/PostsScreen';
@@ -19,36 +18,35 @@ const options = {
 };
 
 function MyTabBar({ state, descriptors, navigation }) {
-  return (
-    <View style={[stylesHomeTabs.footer, stylesHomeTabs.footerBorder]}>
-          {state.routes.map((route, index) => {
-              const { options } = descriptors[route.key];
+    return (
+        <View style={[stylesHomeTabs.footer, stylesHomeTabs.footerBorder]}>
+            {state.routes.map((route, index) => {
+                //   const { options } = descriptors[route.key];
 
-        const isFocused = state.index === index;
+                const isFocused = state.index === index;
 
-        const onPress = () => {
-          if (!isFocused) {
-            navigation.navigate(route.name);
-          }
-        };
+                const onPress = () => {
+                    if (!isFocused) {
+                        navigation.navigate(route.name);
+                    }
+                };
 
-        return (
-          <Pressable
-            onPress={onPress}
-                key={route.key}
-            >
-                {route.name === 'PostsScreen' && <AntDesign name="appstore-o" size={24} color="rgba(33, 33, 33, 0.8)" />}
-                 {route.name === 'CreatePosts' && <View style={stylesHomeTabs.footerButton}>
-                    <Ionicons name="add" size={24} color="white" />
-                </View>}
-                 {route.name === 'Profile' && <Feather name="user" size={24} color="rgba(33, 33, 33, 0.8)" />}
-              
-          </Pressable>
-        );
-      })}
-    </View>
-  );
-}
+                return (
+                    <Pressable
+                        onPress={onPress}
+                        key={route.key}
+                    >
+                        {route.name === 'PostsScreen' && <AntDesign name="appstore-o" size={24} color="rgba(33, 33, 33, 0.8)" />}
+                        {route.name === 'CreatePosts' && <View style={stylesHomeTabs.footerButton}>
+                            <Ionicons name="add" size={24} color="white" />
+                        </View>}
+                        {route.name === 'Profile' && <Feather name="user" size={24} color="rgba(33, 33, 33, 0.8)" />}
+                    </Pressable>
+                );
+            })}
+        </View>
+    );
+};
 
 export function HomeTabsBar() {
     return (
