@@ -9,22 +9,22 @@ import { PostCreateCard } from "../Components/PostCreateCard";
 export const CreatePostsScreen = () => {
     return (
         <View style={styles.container}>
-            <View style={stylesPostsScreen.header}>
+            {/* <View style={stylesPostsScreen.header}>
                 <Text style={stylesPostsScreen.titleH3}>Створити публікацію</Text>
                 <Pressable style={stylesCreatePostsScreen.backIcon}
                 // onPress={onPressFunction}
                 >
                     <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
                 </Pressable>
-            </View>
+            </View> */}
             <PostCreateCard/>
-            <View style={stylesPostsScreen.footer}>
+            {/* <View style={stylesPostsScreen.footer}>
                 <Pressable style={stylesCreatePostsScreen.footerDeleteButton}
                 // onPress={onPressFunction}
                 >
                     <AntDesign name="delete" size={24} color="rgba(189, 189, 189, 1)" />
                 </Pressable>
-            </View>
+            </View> */}
         </View>
     )
 };

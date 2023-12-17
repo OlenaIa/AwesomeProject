@@ -67,6 +67,7 @@ export const stylesPostCreateCard = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 32,
         paddingBottom: 111,
+        marginTop: 32,
     },
     photo: {
         justifyContent: 'center',

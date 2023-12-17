@@ -57,7 +57,29 @@ export function HomeTabsBar() {
             <Screen
                 name="PostsScreen"
                 component={PostsScreen}
-                options={options}
+                options={{
+                    headerStyle: {
+                        height: 83,
+                        borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+                        borderBottomWidth: 0.5,
+                    },
+                    headerTitle: 'Публікації',
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontSize: 17,
+                        fontFamily: 'RobotoMedium'
+                    },
+                    headerBackVisible: false,
+                    headerTintColor: '#212121',
+                    headerLeft: () => { },
+                    headerRight: () => (
+                        <Pressable style={stylesHomeTabs.exitIcon}
+                        // onPress={onPressFunction}
+                        >
+                            <Ionicons name="exit-outline" size={24} color="#BDBDBD" />
+                        </Pressable>
+                    ),
+                }}
             />
             <Screen
                 name="CreatePosts"
@@ -74,6 +96,11 @@ export function HomeTabsBar() {
 };
 
 export const stylesHomeTabs = StyleSheet.create({
+    exitIcon: {
+        position: 'absolute',
+        right: 16,
+        bottom: 10,
+    },
     footer: {
         width: '100%',
         flexDirection: 'row',
@@ -89,7 +116,7 @@ export const stylesHomeTabs = StyleSheet.create({
         borderTopColor: 'rgba(0, 0, 0, 0.30)',
         borderTopWidth: 0.5,
     },
-footerButton: {
+    footerButton: {
         justifyContent: 'center',
         width: 70,
         height: 40,

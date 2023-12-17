@@ -25,7 +25,7 @@ export const ProfileScreen = () => {
                     <View style={stylesProfileScreen.postList}>
                         <PostItem />
                     </View>
-                    <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
+                    {/* <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
                         <Pressable
                         // onPress={onPressFunction}
                         >
@@ -41,7 +41,7 @@ export const ProfileScreen = () => {
                         >
                             <Ionicons name="add" size={24} color="rgba(33, 33, 33, 0.8)" />
                         </Pressable>
-                    </View>
+                    </View> */}
                 </View>
             </ImageBackground>
         </View>
