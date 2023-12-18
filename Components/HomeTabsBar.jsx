@@ -4,6 +4,7 @@ import { PostsScreen } from '../Screens/PostsScreen';
 import { CreatePostsScreen } from '../Screens/CreatePostsScreen';
 import { ProfileScreen } from '../Screens/ProfileScreen';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
 
 const Tabs = createBottomTabNavigator();
 const { Navigator, Screen } = Tabs;
@@ -11,19 +12,25 @@ const { Navigator, Screen } = Tabs;
 const options = {
     headerShown: false,
     tabBarShowLabel: false,
-    // tabBarActiveTintColor: 'white',
-    // tabBarInactiveTintColor: 'rgba(33, 33, 33, 0.8)',
-    // tabBarActiveBackgroundColor: '#FF6C00',
-    // tabBarInactiveBackgroundColor: 'white',
+    tabBarActiveTintColor: 'white',
+    tabBarInactiveTintColor: 'rgba(33, 33, 33, 0.8)',
+    tabBarActiveBackgroundColor: '#FF6C00',
+    tabBarInactiveBackgroundColor: 'white',
 };
 
 function MyTabBar({ state, descriptors, navigation }) {
     return (
         <View style={[stylesHomeTabs.footer, stylesHomeTabs.footerBorder]}>
             {state.routes.map((route, index) => {
-                //   const { options } = descriptors[route.key];
+                const { options } = descriptors[route.key];
+                const { tabBarActiveTintColor,
+                    tabBarInactiveTintColor,
+                    tabBarActiveBackgroundColor,
+                    tabBarInactiveBackgroundColor } = options;
 
                 const isFocused = state.index === index;
+                const colorBgTab = isFocused ? tabBarActiveBackgroundColor : tabBarInactiveBackgroundColor;
+                const colorTab = isFocused ? tabBarActiveTintColor : tabBarInactiveTintColor;
 
                 const onPress = () => {
                     if (!isFocused) {
@@ -36,11 +43,11 @@ function MyTabBar({ state, descriptors, navigation }) {
                         onPress={onPress}
                         key={route.key}
                     >
-                        {route.name === 'PostsScreen' && <AntDesign name="appstore-o" size={24} color="rgba(33, 33, 33, 0.8)" />}
-                        {route.name === 'CreatePosts' && <View style={stylesHomeTabs.footerButton}>
-                            <Ionicons name="add" size={24} color="white" />
-                        </View>}
-                        {route.name === 'Profile' && <Feather name="user" size={24} color="rgba(33, 33, 33, 0.8)" />}
+                        <View style={[stylesHomeTabs.footerButton, { backgroundColor: colorBgTab }]}>
+                            {route.name === 'PostsScreen' && <AntDesign name="appstore-o" size={24} color={colorTab} />}
+                            {route.name === 'CreatePosts' && <Ionicons name="add" size={24} color={colorTab} />}
+                            {route.name === 'Profile' && <Feather name="user" size={24} color={colorTab} />}
+                        </View>
                     </Pressable>
                 );
             })}
@@ -49,6 +56,8 @@ function MyTabBar({ state, descriptors, navigation }) {
 };
 
 export function HomeTabsBar() {
+        const navigation = useNavigation();
+
     return (
         <Navigator
             initialRouteName="PostsScreen"
@@ -74,11 +83,15 @@ export function HomeTabsBar() {
                     headerLeft: () => { },
                     headerRight: () => (
                         <Pressable style={stylesHomeTabs.exitIcon}
-                        // onPress={onPressFunction}
+                        onPress={() => {navigation.navigate("Login")}}
                         >
                             <Ionicons name="exit-outline" size={24} color="#BDBDBD" />
                         </Pressable>
                     ),
+                    tabBarActiveTintColor: 'white',
+                    tabBarInactiveTintColor: 'rgba(33, 33, 33, 0.8)',
+                    tabBarActiveBackgroundColor: '#FF6C00',
+                    tabBarInactiveBackgroundColor: 'white'
                 }}
             />
             <Screen
@@ -105,7 +118,7 @@ export const stylesHomeTabs = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
-        gap: 39,
+        gap: 16,
         marginTop: 'auto',
         paddingTop: 9,
         paddingBottom: 34,
