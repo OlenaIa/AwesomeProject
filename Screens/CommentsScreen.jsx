@@ -14,14 +14,14 @@ export const CommentsScreen = () => {
 
     return (
         <View style={styles.container}>
-            <View style={stylesPostsScreen.header}>
+            {/* <View style={stylesPostsScreen.header}>
                 <Text style={stylesPostsScreen.titleH3}>Коментарі</Text>
                 <Pressable style={stylesCreatePostsScreen.backIcon}
                 // onPress={onPressFunction}
                 >
                     <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
                 </Pressable>
-            </View>
+            </View> */}
             <View style={stylesPostCreateCard.card}>
                 <View style={stylesPostCreateCard.photo}>
                     <Image source={post} />

@@ -5,9 +5,12 @@ import { stylesRegister } from '../Components/RegistrationForm';
 import { PostItem } from '../Components/PostItem';
 import { stylesPostsScreen } from './PostsScreen';
 import { Ionicons, AntDesign, Feather } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
 
 
 export const ProfileScreen = () => {
+            const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <ImageBackground source={back} resizeMode="cover" style={styles.imageBack}>
@@ -23,7 +26,7 @@ export const ProfileScreen = () => {
                     </View>
                     <Text style={styles.title}>Natali Romanova</Text>
                     <View style={stylesProfileScreen.postList}>
-                        <PostItem />
+                        <PostItem navigation={navigation} />
                     </View>
                     {/* <View style={[stylesPostsScreen.footer, stylesPostsScreen.footerBorder]}>
                         <Pressable

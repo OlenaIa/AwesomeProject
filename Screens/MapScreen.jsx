@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
 import { styles } from "../App"
-import { AntDesig  } from '@expo/vector-icons'; 
+import { AntDesign  } from '@expo/vector-icons'; 
 import { stylesPostsScreen } from "./PostsScreen";
 import { stylesCreatePostsScreen } from "./CreatePostsScreen";
 

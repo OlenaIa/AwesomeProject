@@ -5,12 +5,11 @@ import * as MediaLibrary from "expo-media-library";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { stylesPostCreateCard } from "./PostCreateCard";
 
-export default function CameraPage({setPhoto}) {
+export default function CameraPage({ setPhoto }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
-    
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -22,10 +21,10 @@ export default function CameraPage({setPhoto}) {
 
   if (hasPermission === null) {
     return <View />;
-  }
+  };
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -46,40 +45,34 @@ export default function CameraPage({setPhoto}) {
             }}
           >
             <Text style={{ fontSize: 18, padding: 10, color: "white" }}>
-              {" "}
-              Flip{" "}
+              {" "}Flip{" "}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
             onPress={async () => {
               if (cameraRef) {
-                  const { uri } = await cameraRef.takePictureAsync();
-                  await MediaLibrary.createAssetAsync(uri);
-                  setPhoto(uri);
+                const { uri } = await cameraRef.takePictureAsync();
+                await MediaLibrary.createAssetAsync(uri);
+                setPhoto(uri);
               }
             }}
           >
-<View style={stylesPostCreateCard.buttonPhoto}
-                    // onPress={onPressFunction}
-                    >
-                        <MaterialIcons name="photo-camera" size={24} color="#BDBDBD" />
-                        </View>
-            {/* <View style={styles.takePhotoOut}>
-              <View style={styles.takePhotoInner}></View>
-            </View> */}
+            <View style={stylesPostCreateCard.buttonPhoto}>
+              <MaterialIcons name="photo-camera" size={24} color="#BDBDBD" />
+            </View>
           </TouchableOpacity>
         </View>
       </Camera>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-        width: '100%',
-        height: '100%',
+    width: '100%',
+    height: '100%',
     },
   camera: { flex: 1 },
   photoView: {
@@ -88,7 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     justifyContent: "center",
   },
-
   flipContainer: {
     position: 'absolute',
     bottom: 0,
@@ -96,28 +88,7 @@ const styles = StyleSheet.create({
     flex: 0.1,
     alignSelf: "flex-end",
   },
-
   button: {
     alignSelf: "center"
-  },
-
-  takePhotoOut: {
-    borderWidth: 2,
-    borderColor: "white",
-    height: 50,
-    width: 50,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 50,
-  },
-
-  takePhotoInner: {
-    borderWidth: 2,
-    borderColor: "white",
-    height: 40,
-    width: 40,
-    backgroundColor: "white",
-    borderRadius: 50,
   },
 });

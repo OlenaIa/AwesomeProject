@@ -6,6 +6,9 @@ import { LoginScreen } from './Screens/LoginScreen';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeTabsBar } from './Components/HomeTabsBar';
+import { CommentsScreen } from './Screens/CommentsScreen';
+import { MapScreen } from './Screens/MapScreen';
+
 
 const MainStack = createStackNavigator();
 const { Navigator, Screen } = MainStack;
@@ -33,6 +36,8 @@ export default function App() {
         <Screen name="Registration" component={RegistrationScreen} options={options} />
         <Screen name="Login" component={LoginScreen} options={options} />
         <Screen name="Home" component={HomeTabsBar} options={options} />
+        <Screen name="Comments" component={CommentsScreen} options={options} />
+        <Screen name="Map" component={MapScreen} options={options} />
       </Navigator>
     </NavigationContainer>
   );

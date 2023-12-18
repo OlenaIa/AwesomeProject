@@ -5,64 +5,57 @@ import { styles } from "../App";
 import CameraPage from "./Camera";
 import * as Location from 'expo-location';
 
-
-
-export const PostCreateCard = ({navigation}) => {
-        const [photo, setPhoto] = useState(null);
+export const PostCreateCard = ({ navigation }) => {
+    const [photo, setPhoto] = useState(null);
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
-        const [coordinate, setCoordinate] = useState('');
-
-      const [errorMsg, setErrorMsg] = useState(null);
-
-    console.log('photo', photo);
+    const [coordinate, setCoordinate] = useState('');
+    const [errorMsg, setErrorMsg] = useState(null);
     
-useEffect(() => {
-    (async () => {
-      
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-            setErrorMsg('Permission to access location was denied');
-            return;
-        }
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            };
 
-        let location = await Location.getCurrentPositionAsync({});
-        const coords = {
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-        };
-        setCoordinate(coords);
-    })();
-}, []);
+            let location = await Location.getCurrentPositionAsync({});
+            const coords = {
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+            };
 
-             let text = 'Waiting..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (coordinate) {
-    text = JSON.stringify(coordinate);
-  }
+            setCoordinate(coords);
+        })();
+    }, []);
+
+    let text = 'Waiting..';
+    if (errorMsg) {
+        text = errorMsg;
+    } else if (coordinate) {
+        text = JSON.stringify(coordinate);
+    };
     
     const onSubmitForm = () => {
-
-   
         console.log('title =>', title);
         console.log('location =>', location);
         console.log('coordinate =>', coordinate);
-                console.log('text =>', text);
+        console.log('text =>', text);
 
-                    navigation.navigate("PostsScreen");
-
-        // setTitle('');
-        // setLocation('');
+        navigation.navigate("PostsScreen");
+        setPhoto('');
+        setTitle('');
+        setLocation('');
     };
 
     return (
         <View style={stylesPostCreateCard.card}>
             <View>
                 <View style={stylesPostCreateCard.photo}>
-                    {photo && <Image source={{uri: photo}} style={stylesPostCreateCard.photoImg}/>}
+                    {photo && <Image source={{ uri: photo }} style={stylesPostCreateCard.photoImg} />}
                     {!photo && <CameraPage setPhoto={setPhoto} style={stylesPostCreateCard.photoImg} />}
-                    {photo && <Pressable style={[stylesPostCreateCard.buttonPhoto, {position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.30)'}] }
+                    {photo && <Pressable style={[stylesPostCreateCard.buttonPhoto, { position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.30)' }]}
                     // onPress={onPressFunction}
                     >
                         <MaterialIcons name="photo-camera" size={24} color="white" />
@@ -88,8 +81,8 @@ useEffect(() => {
                 </View>
             </View>
             <Pressable
-                style={[styles.button, (title.length > 0 && location.length > 0 ? { backgroundColor: '#FF6C00' } : { backgroundColor: '#F6F6F6' })]}
-                disabled={(title.length > 0 && location.length > 0 ? false : true)}
+                style={[styles.button, (photo && title.length > 0 && location.length > 0 ? { backgroundColor: '#FF6C00' } : { backgroundColor: '#F6F6F6' })]}
+                disabled={(photo && title.length > 0 && location.length > 0 ? false : true)}
                 onPress={onSubmitForm}
             >
                 <Text
@@ -129,8 +122,6 @@ export const stylesPostCreateCard = StyleSheet.create({
         height: '100%',
     },
     buttonPhoto: {
-        // position: 'absolute',
-        // zIndex: 10,
         justifyContent: 'center',
         alignItems: 'center',
         width: 60,

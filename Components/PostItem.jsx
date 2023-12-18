@@ -3,7 +3,7 @@ import post from '../img/post.jpg'
 import { stylesCreatePostsScreen } from '../Screens/CreatePostsScreen';
 import { FontAwesome, AntDesign, SimpleLineIcons  } from '@expo/vector-icons'; 
 
-export const PostItem = () => {
+export const PostItem = ({ navigation }) => {
     return (
         <View style={stylesPostItem.postWrap}>
             <View style={stylesCreatePostsScreen.photo}>
@@ -13,7 +13,9 @@ export const PostItem = () => {
             <View style={stylesPostItem.interactiveWrap}>
                 <View style={[stylesPostItem.likesWrap, { gap: 24 }]}>
                     <View style={stylesPostItem.likesWrap}>
-                        <Pressable>
+                        <Pressable
+                            onPress={() => { navigation.navigate("Comments"); }}
+                        >
                             <FontAwesome name="comment" size={24} color="#FF6C00" />
                         </Pressable>
                         <Text>8</Text>
@@ -25,10 +27,13 @@ export const PostItem = () => {
                         <Text>153</Text>
                     </View>
                 </View>
-                <View style={[stylesPostItem.likesWrap, { gap: 4 }]}>
-                    <SimpleLineIcons name="location-pin" size={20} color="#BDBDBD" />
+                <Pressable
+                    onPress={() => { navigation.navigate("Map"); }}
+                >
+                    <View style={[stylesPostItem.likesWrap, { gap: 4 }]}>
+                        <SimpleLineIcons name="location-pin" size={20} color="#BDBDBD" />
                         <Text style={stylesPostItem.locationText}>Ukraine</Text>
-                </View>
+                    </View></Pressable>
             </View>
         </View>
     )
