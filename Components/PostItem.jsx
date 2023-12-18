@@ -1,12 +1,12 @@
 import { View, Image, Text, StyleSheet, Pressable } from 'react-native';
 import post from '../img/post.jpg'
-import { stylesCreatePostsScreen } from '../Screens/CreatePostsScreen';
 import { FontAwesome, AntDesign, SimpleLineIcons  } from '@expo/vector-icons'; 
+import { stylesPostCreateCard } from './PostCreateCard';
 
 export const PostItem = ({ navigation }) => {
     return (
         <View style={stylesPostItem.postWrap}>
-            <View style={stylesCreatePostsScreen.photo}>
+            <View style={stylesPostCreateCard.photo}>
                 <Image source={post} />
             </View>
             <Text style={stylesPostItem.textTitle}>Ліс</Text>
@@ -33,7 +33,8 @@ export const PostItem = ({ navigation }) => {
                     <View style={[stylesPostItem.likesWrap, { gap: 4 }]}>
                         <SimpleLineIcons name="location-pin" size={20} color="#BDBDBD" />
                         <Text style={stylesPostItem.locationText}>Ukraine</Text>
-                    </View></Pressable>
+                    </View>
+                </Pressable>
             </View>
         </View>
     )

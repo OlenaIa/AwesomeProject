@@ -36,8 +36,34 @@ export default function App() {
         <Screen name="Registration" component={RegistrationScreen} options={options} />
         <Screen name="Login" component={LoginScreen} options={options} />
         <Screen name="Home" component={HomeTabsBar} options={options} />
-        <Screen name="Comments" component={CommentsScreen} options={options} />
-        <Screen name="Map" component={MapScreen} options={options} />
+        <Screen name="Comments" component={CommentsScreen} options={{
+          headerTitle: "Коментарі",
+          headerStyle: {
+            height: 83,
+            borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+            borderBottomWidth: 0.5,
+          },
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 17,
+            fontFamily: 'RobotoMedium'
+          },
+        }}
+        />
+        <Screen name="Map" component={MapScreen} options={{
+          headerTitle: "Мапа",
+          headerStyle: {
+            height: 83,
+            borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+            borderBottomWidth: 0.5,
+          },
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 17,
+            fontFamily: 'RobotoMedium'
+          },
+        }}
+        />
       </Navigator>
     </NavigationContainer>
   );

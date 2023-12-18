@@ -97,7 +97,31 @@ export function HomeTabsBar() {
             <Screen
                 name="CreatePosts"
                 component={CreatePostsScreen}
-                options={options}
+                options={{
+                    headerStyle: {
+                        height: 83,
+                        borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+                        borderBottomWidth: 0.5,
+                    },
+                    headerTitle: 'Створити публікацію',
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontSize: 17,
+                        fontFamily: 'RobotoMedium'
+                    },
+                    headerLeft: () => {
+                <Pressable style={stylesHomeTabs.backIcon}
+                onPress={navigation.goBack}
+                >
+                    <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
+                </Pressable>
+                    },
+                    headerTintColor: '#212121',
+                    tabBarActiveTintColor: 'white',
+                    tabBarInactiveTintColor: 'rgba(33, 33, 33, 0.8)',
+                    tabBarActiveBackgroundColor: '#FF6C00',
+                    tabBarInactiveBackgroundColor: 'white'
+                }}
             />
             <Screen
                 name="Profile"
@@ -109,6 +133,11 @@ export function HomeTabsBar() {
 };
 
 export const stylesHomeTabs = StyleSheet.create({
+    backIcon: {
+        position: 'absolute',
+        left: 10,
+        bottom: 11,
+    },
     exitIcon: {
         position: 'absolute',
         right: 16,

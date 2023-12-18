@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Image, Pressable, StyleSheet, Text, View, TextInput } from "react-native"
-import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons'; 
+import { MaterialIcons, SimpleLineIcons, AntDesign } from '@expo/vector-icons'; 
 import { styles } from "../App";
 import CameraPage from "./Camera";
 import * as Location from 'expo-location';
@@ -49,6 +49,12 @@ export const PostCreateCard = ({ navigation }) => {
         setLocation('');
     };
 
+    const onDelete = () => {
+        setPhoto('');
+        setTitle('');
+        setLocation('');
+    };
+
     return (
         <View style={stylesPostCreateCard.card}>
             <View>
@@ -91,6 +97,11 @@ export const PostCreateCard = ({ navigation }) => {
                     Опублікувати
                 </Text>
             </Pressable>
+                <Pressable style={stylesPostCreateCard.footerDeleteButton}
+                onPress={onDelete}
+                >
+                    <AntDesign name="delete" size={24} color="rgba(189, 189, 189, 1)" />
+                </Pressable>
         </View>
     )
 };
@@ -146,4 +157,12 @@ export const stylesPostCreateCard = StyleSheet.create({
         left: 0,
         bottom: 31,
     },
+    footerDeleteButton: {
+        justifyContent: 'center',
+        width: 70,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: '#F6F6F6',
+        alignItems: 'center',
+    }
 });
