@@ -5,6 +5,7 @@ import smallAvatar from '../img/smallAvatar.jpg'
 import { stylesPostsScreen } from "./PostsScreen";
 import 'react-native-gesture-handler';
 import { PostCreateCard } from "../Components/PostCreateCard";
+import CameraPage from "../Components/Camera";
 
 export const CreatePostsScreen = () => {
     return (
@@ -18,6 +19,7 @@ export const CreatePostsScreen = () => {
                 </Pressable>
             </View> */}
             <PostCreateCard/>
+            {/* <CameraPage/> */}
             {/* <View style={stylesPostsScreen.footer}>
                 <Pressable style={stylesCreatePostsScreen.footerDeleteButton}
                 // onPress={onPressFunction}

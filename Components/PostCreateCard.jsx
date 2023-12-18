@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Image, Pressable, StyleSheet, Text, View, TextInput } from "react-native"
 import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons'; 
-import { styles } from "../App"
+import { styles } from "../App";
+import CameraPage from "./Camera";
+
 
 export const PostCreateCard = () => {
+        const [photo, setPhoto] = useState(null);
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
+        console.log('photo', photo);
 
     const onSubmitForm = () => {
         console.log('title =>', title);
@@ -18,14 +22,15 @@ export const PostCreateCard = () => {
         <View style={stylesPostCreateCard.card}>
             <View>
                 <View style={stylesPostCreateCard.photo}>
-                    {/* <Image source={smallAvatar} /> */}
-                    <Pressable style={stylesPostCreateCard.buttonPhoto}
+                    {photo && <Image source={{uri: photo}} style={stylesPostCreateCard.photoImg}/>}
+                    {!photo && <CameraPage setPhoto={setPhoto} style={stylesPostCreateCard.photoImg} />}
+                        <Pressable style={stylesPostCreateCard.buttonPhoto}
                     // onPress={onPressFunction}
                     >
                         <MaterialIcons name="photo-camera" size={24} color="#BDBDBD" />
-                    </Pressable>
+                        </Pressable>
                 </View>
-                <Text style={stylesPostCreateCard.photoTitle}>Завантажити фото</Text>
+                <Text style={stylesPostCreateCard.photoTitle}>{photo ? 'Редагувати фото' : 'Завантажити фото'}</Text>
             </View>
             <View style={[styles.formWrap, { marginBottom: 0 }]}>
                 <TextInput
@@ -81,7 +86,13 @@ export const stylesPostCreateCard = StyleSheet.create({
         backgroundColor: '#F6F6F6',
         marginBottom: 8,
     },
+    photoImg: {
+        width: '100%',
+        height: '100%',
+    },
     buttonPhoto: {
+        position: 'absolute',
+        zIndex: 10,
         justifyContent: 'center',
         alignItems: 'center',
         width: 60,
