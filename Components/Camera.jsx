@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { Camera } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
+import { MaterialIcons } from '@expo/vector-icons'; 
+import { stylesPostCreateCard } from "./PostCreateCard";
 
 export default function CameraPage({setPhoto}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+
     
   useEffect(() => {
     (async () => {
@@ -42,7 +45,7 @@ export default function CameraPage({setPhoto}) {
               );
             }}
           >
-            <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
+            <Text style={{ fontSize: 18, padding: 10, color: "white" }}>
               {" "}
               Flip{" "}
             </Text>
@@ -57,9 +60,14 @@ export default function CameraPage({setPhoto}) {
               }
             }}
           >
-            <View style={styles.takePhotoOut}>
+<View style={stylesPostCreateCard.buttonPhoto}
+                    // onPress={onPressFunction}
+                    >
+                        <MaterialIcons name="photo-camera" size={24} color="#BDBDBD" />
+                        </View>
+            {/* <View style={styles.takePhotoOut}>
               <View style={styles.takePhotoInner}></View>
-            </View>
+            </View> */}
           </TouchableOpacity>
         </View>
       </Camera>
@@ -75,17 +83,23 @@ const styles = StyleSheet.create({
     },
   camera: { flex: 1 },
   photoView: {
+    position: 'relative',
     flex: 1,
     backgroundColor: "transparent",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
 
   flipContainer: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
     flex: 0.1,
     alignSelf: "flex-end",
   },
 
-  button: { alignSelf: "center" },
+  button: {
+    alignSelf: "center"
+  },
 
   takePhotoOut: {
     borderWidth: 2,

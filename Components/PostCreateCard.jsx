@@ -3,19 +3,57 @@ import { Image, Pressable, StyleSheet, Text, View, TextInput } from "react-nativ
 import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons'; 
 import { styles } from "../App";
 import CameraPage from "./Camera";
+import * as Location from 'expo-location';
 
 
-export const PostCreateCard = () => {
+
+export const PostCreateCard = ({navigation}) => {
         const [photo, setPhoto] = useState(null);
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
-        console.log('photo', photo);
+        const [coordinate, setCoordinate] = useState('');
 
+      const [errorMsg, setErrorMsg] = useState(null);
+
+    console.log('photo', photo);
+    
+useEffect(() => {
+    (async () => {
+      
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+            setErrorMsg('Permission to access location was denied');
+            return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        const coords = {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+        };
+        setCoordinate(coords);
+    })();
+}, []);
+
+             let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (coordinate) {
+    text = JSON.stringify(coordinate);
+  }
+    
     const onSubmitForm = () => {
+
+   
         console.log('title =>', title);
         console.log('location =>', location);
-        setTitle('');
-        setLocation('');
+        console.log('coordinate =>', coordinate);
+                console.log('text =>', text);
+
+                    navigation.navigate("PostsScreen");
+
+        // setTitle('');
+        // setLocation('');
     };
 
     return (
@@ -24,11 +62,11 @@ export const PostCreateCard = () => {
                 <View style={stylesPostCreateCard.photo}>
                     {photo && <Image source={{uri: photo}} style={stylesPostCreateCard.photoImg}/>}
                     {!photo && <CameraPage setPhoto={setPhoto} style={stylesPostCreateCard.photoImg} />}
-                        <Pressable style={stylesPostCreateCard.buttonPhoto}
+                    {photo && <Pressable style={[stylesPostCreateCard.buttonPhoto, {position: 'absolute', backgroundColor: 'rgba(255, 255, 255, 0.30)'}] }
                     // onPress={onPressFunction}
                     >
-                        <MaterialIcons name="photo-camera" size={24} color="#BDBDBD" />
-                        </Pressable>
+                        <MaterialIcons name="photo-camera" size={24} color="white" />
+                    </Pressable>}
                 </View>
                 <Text style={stylesPostCreateCard.photoTitle}>{photo ? 'Редагувати фото' : 'Завантажити фото'}</Text>
             </View>
@@ -91,8 +129,8 @@ export const stylesPostCreateCard = StyleSheet.create({
         height: '100%',
     },
     buttonPhoto: {
-        position: 'absolute',
-        zIndex: 10,
+        // position: 'absolute',
+        // zIndex: 10,
         justifyContent: 'center',
         alignItems: 'center',
         width: 60,

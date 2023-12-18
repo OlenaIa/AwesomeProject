@@ -1,13 +1,14 @@
 import { Image, Pressable, StyleSheet, Text, View, TextInput } from "react-native"
 import { styles } from "../App"
 import { MaterialIcons , AntDesign, Feather, SimpleLineIcons  } from '@expo/vector-icons'; 
-import smallAvatar from '../img/smallAvatar.jpg'
 import { stylesPostsScreen } from "./PostsScreen";
 import 'react-native-gesture-handler';
 import { PostCreateCard } from "../Components/PostCreateCard";
-import CameraPage from "../Components/Camera";
+import { useNavigation } from '@react-navigation/native';
 
 export const CreatePostsScreen = () => {
+        const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             {/* <View style={stylesPostsScreen.header}>
@@ -18,8 +19,7 @@ export const CreatePostsScreen = () => {
                     <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
                 </Pressable>
             </View> */}
-            <PostCreateCard/>
-            {/* <CameraPage/> */}
+            <PostCreateCard navigation={navigation} />
             {/* <View style={stylesPostsScreen.footer}>
                 <Pressable style={stylesCreatePostsScreen.footerDeleteButton}
                 // onPress={onPressFunction}
