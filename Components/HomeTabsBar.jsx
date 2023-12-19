@@ -56,7 +56,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 };
 
 export function HomeTabsBar() {
-        const navigation = useNavigation();
+    const navigation = useNavigation();
 
     return (
         <Navigator
@@ -83,7 +83,7 @@ export function HomeTabsBar() {
                     headerLeft: () => { },
                     headerRight: () => (
                         <Pressable style={stylesHomeTabs.exitIcon}
-                        onPress={() => {navigation.navigate("Login")}}
+                            onPress={() => { navigation.navigate("Login") }}
                         >
                             <Ionicons name="exit-outline" size={24} color="#BDBDBD" />
                         </Pressable>
@@ -110,11 +110,11 @@ export function HomeTabsBar() {
                         fontFamily: 'RobotoMedium'
                     },
                     headerLeft: () => {
-                <Pressable style={stylesHomeTabs.backIcon}
-                onPress={navigation.goBack}
-                >
-                    <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
-                </Pressable>
+                        <Pressable style={stylesHomeTabs.backIcon}
+                            onPress={navigation.goBack}
+                        >
+                            <AntDesign name="arrowleft" size={24} color="rgba(33, 33, 33, 0.8)" />
+                        </Pressable>
                     },
                     headerTintColor: '#212121',
                     tabBarActiveTintColor: 'white',
