@@ -3,6 +3,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    Image,
     Pressable,
     TouchableWithoutFeedback,
     Keyboard,
@@ -13,6 +14,7 @@ import {
 import { styles } from '../App';
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'; 
+import * as ImagePicker from 'expo-image-picker';
 
 
 export const RegistrationForm = ({ navigation }) => {
@@ -25,6 +27,24 @@ export const RegistrationForm = ({ navigation }) => {
         email: false,
         password: false
     });
+    const [image, setImage] = useState(null);
+
+    const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
     const onSubmitForm = () => {
         console.log('login =>', login);
         console.log('email =>', email);
@@ -44,14 +64,20 @@ export const RegistrationForm = ({ navigation }) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={stylesRegister.container}>
                 <View style={styles.avatar}>
-                    {/* <Image source={addPhoto}
-                            style={stylesRegister.imgAvatar} /> */}
+                    {image && <View style={{width: 120,
+    height: 120,
+    backgroundColor: '#F6F6F6',
+    borderRadius: 16, overflow: 'hidden'} }><Image source={{ uri: image }}
+                            style={stylesRegister.imgAvatar} /></View>}
                     <Pressable style={stylesRegister.imgBtnAdd}
-                    // onPress={onPressFunction}
+                    onPress={pickImage}
                     >
                         <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
                     </Pressable>
                 </View>
+                {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> */}
+      
+
                 <Text style={styles.title}>Реєстрація</Text>
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"}>

@@ -8,6 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeTabsBar } from './Components/HomeTabsBar';
 import { CommentsScreen } from './Screens/CommentsScreen';
 import { MapScreen } from './Screens/MapScreen';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+// import { persistor, store } from './redux/store';
 
 
 const MainStack = createStackNavigator();
@@ -30,42 +33,48 @@ export default function App() {
   }
 
   return (
-    // <CommentsScreen />
-    <NavigationContainer>
-      <Navigator initialRouteName="Login">
-        <Screen name="Registration" component={RegistrationScreen} options={options} />
-        <Screen name="Login" component={LoginScreen} options={options} />
-        <Screen name="Home" component={HomeTabsBar} options={options} />
-        <Screen name="Comments" component={CommentsScreen} options={{
-          headerTitle: "Коментарі",
-          headerStyle: {
-            height: 83,
-            borderBottomColor: 'rgba(0, 0, 0, 0.30)',
-            borderBottomWidth: 0.5,
-          },
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontSize: 17,
-            fontFamily: 'RobotoMedium'
-          },
-        }}
-        />
-        <Screen name="Map" component={MapScreen} options={{
-          headerTitle: "Мапа",
-          headerStyle: {
-            height: 83,
-            borderBottomColor: 'rgba(0, 0, 0, 0.30)',
-            borderBottomWidth: 0.5,
-          },
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            fontSize: 17,
-            fontFamily: 'RobotoMedium'
-          },
-        }}
-        />
-      </Navigator>
-    </NavigationContainer>
+    // <Provider store={store}>
+    //   <PersistGate
+    //     loading={<Text>Loading...</Text>}
+    //     persistor={persistor}
+    //   >
+        <NavigationContainer>
+          <Navigator initialRouteName="Login">
+            <Screen name="Registration" component={RegistrationScreen} options={options} />
+            <Screen name="Login" component={LoginScreen} options={options} />
+            <Screen name="Home" component={HomeTabsBar} options={options} />
+            <Screen name="Comments" component={CommentsScreen} options={{
+              headerTitle: "Коментарі",
+              headerStyle: {
+                height: 83,
+                borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+                borderBottomWidth: 0.5,
+              },
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontSize: 17,
+                fontFamily: 'RobotoMedium'
+              },
+            }}
+            />
+            <Screen name="Map" component={MapScreen} options={{
+              headerTitle: "Мапа",
+              headerStyle: {
+                height: 83,
+                borderBottomColor: 'rgba(0, 0, 0, 0.30)',
+                borderBottomWidth: 0.5,
+              },
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontSize: 17,
+                fontFamily: 'RobotoMedium'
+              },
+            }}
+            />
+          </Navigator>
+        </NavigationContainer>
+    //   </PersistGate>
+    // </Provider>
   );
 };
 
