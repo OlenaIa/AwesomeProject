@@ -30,20 +30,17 @@ export const RegistrationForm = ({ navigation }) => {
     const [image, setImage] = useState(null);
 
     const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 4],
-      quality: 1,
-    });
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 4],
+            quality: 1,
+        });
 
-    console.log(result);
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
-  };
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+    };
 
     const onSubmitForm = () => {
         console.log('login =>', login);
@@ -53,8 +50,8 @@ export const RegistrationForm = ({ navigation }) => {
         setEmail('');
         setPassword('');
         navigation.navigate("Home",
-                    // { sessionId: 45, userId: "22e24" }
-                )
+            // { sessionId: 45, userId: "22e24" }
+        )
     };
 
     const onFocusToggle = (inputName) => { setIsFocus({ [inputName]: true }) };
@@ -64,20 +61,17 @@ export const RegistrationForm = ({ navigation }) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={stylesRegister.container}>
                 <View style={styles.avatar}>
-                    {image && <View style={{width: 120,
-    height: 120,
-    backgroundColor: '#F6F6F6',
-    borderRadius: 16, overflow: 'hidden'} }><Image source={{ uri: image }}
-                            style={stylesRegister.imgAvatar} /></View>}
-                    <Pressable style={stylesRegister.imgBtnAdd}
-                    onPress={pickImage}
+                    {image && <View style={styles.avatarWrap}>
+                        <Image source={{ uri: image }}
+                            style={stylesRegister.imgAvatar} />
+                    </View>}
+                    <Pressable style={[stylesRegister.imgBtnAdd, { transform: image ? [{ rotate: '45deg' }] : [{ rotate: '0deg' }] }]}
+                        onPress={pickImage}
+                        disabled={image ? true : false}
                     >
-                        <Ionicons name="add-circle-outline" size={25} color="#FF6C00" />
+                        <Ionicons name="add-circle-outline" size={25} color={image ? '#BDBDBD' : "#FF6C00"} />
                     </Pressable>
                 </View>
-                {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> */}
-      
-
                 <Text style={styles.title}>Реєстрація</Text>
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"}>

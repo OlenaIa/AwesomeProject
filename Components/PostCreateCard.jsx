@@ -4,6 +4,7 @@ import { MaterialIcons, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 import { styles } from "../App";
 import CameraPage from "./Camera";
 import * as Location from 'expo-location';
+import * as ImagePicker from 'expo-image-picker';
 
 export const PostCreateCard = ({ navigation }) => {
     const [photo, setPhoto] = useState(null);
@@ -29,6 +30,19 @@ export const PostCreateCard = ({ navigation }) => {
             setCoordinate(coords);
         })();
     }, []);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            setPhoto(result.assets[0].uri);
+        }
+    };
 
     let text = 'Waiting..';
     if (errorMsg) {
@@ -67,7 +81,12 @@ export const PostCreateCard = ({ navigation }) => {
                         <MaterialIcons name="photo-camera" size={24} color="white" />
                     </Pressable>}
                 </View>
-                <Text style={stylesPostCreateCard.photoTitle}>{photo ? 'Редагувати фото' : 'Завантажити фото'}</Text>
+                <Pressable
+                    onPress={pickImage}
+                // disabled={photo ? true : false}
+                >
+                    <Text style={stylesPostCreateCard.photoTitle}>{photo ? 'Редагувати фото' : 'Завантажити фото'}</Text>
+                </Pressable>
             </View>
             <View style={[styles.formWrap, { marginBottom: 0 }]}>
                 <TextInput
@@ -97,11 +116,11 @@ export const PostCreateCard = ({ navigation }) => {
                     Опублікувати
                 </Text>
             </Pressable>
-                <Pressable style={stylesPostCreateCard.footerDeleteButton}
+            <Pressable style={stylesPostCreateCard.footerDeleteButton}
                 onPress={onDelete}
-                >
-                    <AntDesign name="delete" size={24} color="rgba(189, 189, 189, 1)" />
-                </Pressable>
+            >
+                <AntDesign name="delete" size={24} color="rgba(189, 189, 189, 1)" />
+            </Pressable>
         </View>
     )
 };

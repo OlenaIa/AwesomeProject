@@ -107,6 +107,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     borderRadius: 16,
   },
+  avatarWrap: {
+    width: 120,
+    height: 120,
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
   formWrap: {
     width: 343,
     gap: 16,
